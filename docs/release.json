@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "available": false,
+  "project": "mrirr",
+  "board": "esp32s3-n16r8",
+  "channel": "test",
+  "version": "not-released",
+  "published": "",
+  "manifest": "manifest.json",
+  "factory": {
+    "filename": "mrirr-factory-current.bin",
+    "size": 0,
+    "sha256": ""
+  },
+  "ota": {
+    "filename": "mrirr-ota-not-released.bin",
+    "url": "",
+    "size": 0,
+    "sha256": ""
+  },
+  "release_notes": ""
+}

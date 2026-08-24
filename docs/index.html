@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="description" content="MRIRR Firmware installieren und wiederherstellen">
+    <title>MRIRR Firmware Installer</title>
+    <script>
+        try {
+            document.documentElement.dataset.theme = localStorage.getItem('mrirrInstallerTheme') === 'light' ? 'light' : 'dark';
+        } catch (_) {}
+    </script>
+    <link rel="stylesheet" href="assets/style.css">
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+    <script src="assets/installer.js" defer></script>
+</head>
+<body>
+    <svg class="icon-sprite" aria-hidden="true">
+        <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M5 21h14"></path></symbol>
+        <symbol id="icon-usb" viewBox="0 0 24 24"><path d="M12 3v14M9 6l3-3 3 3M12 11l-4 4M8 15H5M12 14l4 4M16 18h3"></path><circle cx="5" cy="15" r="1"></circle><rect x="18" y="17" width="2" height="2"></rect></symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.5 2.5L16 9"></path></symbol>
+        <symbol id="icon-alert" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4L12 3Z"></path><path d="M12 9v5M12 17h.01"></path></symbol>
+        <symbol id="icon-recovery" viewBox="0 0 24 24"><path d="M20 7v5h-5"></path><path d="M18.5 9A7 7 0 1 0 19 16"></path></symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.6 15.7A9 9 0 0 1 8.3 3.4 9 9 0 1 0 20.6 15.7Z"></path></symbol>
+        <symbol id="icon-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"></path><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"></path></symbol>
+    </svg>
+
+    <header class="app-header">
+        <a class="brand" href="#installer" aria-label="MRIRR">
+            <span class="brand-mark" aria-hidden="true">MR</span>
+            <span><strong>MRIRR</strong><small data-i18n="brand_subtitle">Firmware &amp; Wiederherstellung</small></span>
+        </a>
+        <div class="header-tools">
+            <span id="release-badge" class="status-badge waiting"><span class="status-dot"></span><span data-i18n="preparing">Vorbereitung</span></span>
+            <button id="theme-toggle" class="icon-button" type="button" data-action="theme" aria-label="Helles Design aktivieren" title="Helles Design aktivieren">
+                <svg class="sun"><use href="#icon-sun"></use></svg>
+                <svg class="moon"><use href="#icon-moon"></use></svg>
+            </button>
+            <div class="language-switch" role="group" aria-label="Language">
+                <button type="button" data-language="de" class="active">DE</button><span aria-hidden="true">|</span><button type="button" data-language="en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="installer" class="install-section">
+            <div class="install-copy">
+                <h1 data-i18n="title">Firmware installieren</h1>
+                <p class="lead" data-i18n="intro">Verbinde MRIRR per USB mit diesem Computer. Die Installation erfolgt direkt im Browser.</p>
+
+                <div class="release-line">
+                    <span data-i18n="release_label">Verfuegbare Version</span>
+                    <strong id="release-version">-</strong>
+                    <span id="release-date" class="muted"></span>
+                </div>
+
+                <esp-web-install-button id="web-installer">
+                    <button id="install-button" class="primary-button" slot="activate" type="button" disabled>
+                        <svg><use href="#icon-download"></use></svg><span data-i18n="install_button">MRIRR installieren</span>
+                    </button>
+                    <span slot="unsupported" class="inline-warning" data-i18n="unsupported">Dieser Browser unterstuetzt keine serielle Installation. Bitte Chrome oder Edge verwenden.</span>
+                    <span slot="not-allowed" class="inline-warning" data-i18n="https_required">Der Installer muss ueber eine sichere HTTPS-Adresse geoeffnet werden.</span>
+                </esp-web-install-button>
+
+                <p id="install-status" class="install-status" role="status" data-i18n="not_released">Das Factory-Image ist noch nicht fuer Tests freigegeben.</p>
+            </div>
+
+            <div class="compatibility" aria-labelledby="compatibility-title">
+                <div class="section-heading compact">
+                    <h2 id="compatibility-title" data-i18n="compatibility">Systempruefung</h2>
+                </div>
+                <dl class="check-list">
+                    <div><dt data-i18n="secure_connection">Sichere Verbindung</dt><dd id="secure-status" class="check waiting">-</dd></div>
+                    <div><dt data-i18n="serial_access">Serieller Browserzugriff</dt><dd id="serial-status" class="check waiting">-</dd></div>
+                    <div><dt data-i18n="firmware_release">Firmwarefreigabe</dt><dd id="firmware-status" class="check waiting">-</dd></div>
+                </dl>
+                <p class="compatibility-note" data-i18n="browser_note">Unterstuetzt werden aktuelle Desktop-Versionen von Chrome und Edge unter Windows, macOS und Linux.</p>
+            </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="steps-title">
+            <div class="section-heading">
+                <h2 id="steps-title" data-i18n="steps_title">Installation in vier Schritten</h2>
+                <p data-i18n="steps_intro">Ein USB-Datenkabel und ein kompatibler Browser genuegen.</p>
+            </div>
+            <ol class="steps">
+                <li><span>1</span><div><strong data-i18n="step_1_title">USB verbinden</strong><p data-i18n="step_1_text">MRIRR direkt mit dem Computer verbinden.</p></div></li>
+                <li><span>2</span><div><strong data-i18n="step_2_title">Installer starten</strong><p data-i18n="step_2_text">Installieren waehlen und den seriellen Anschluss bestaetigen.</p></div></li>
+                <li><span>3</span><div><strong data-i18n="step_3_title">Firmware schreiben</strong><p data-i18n="step_3_text">Das USB-Kabel waehrend des Vorgangs nicht trennen.</p></div></li>
+                <li><span>4</span><div><strong data-i18n="step_4_title">WLAN einrichten</strong><p data-i18n="step_4_text">Nach dem Neustart den gefuehrten Netzwerkdialog abschliessen.</p></div></li>
+            </ol>
+        </section>
+
+        <section class="content-section split-section" aria-labelledby="recovery-title">
+            <div>
+                <div class="section-heading">
+                    <h2 id="recovery-title" data-i18n="recovery_title">Recovery mit BOOT und RESET</h2>
+                    <p data-i18n="recovery_intro">Nur erforderlich, wenn der ESP32-S3 nicht automatisch erkannt wird.</p>
+                </div>
+                <ol class="recovery-steps">
+                    <li data-i18n="recovery_1">BOOT gedrueckt halten.</li>
+                    <li data-i18n="recovery_2">RESET kurz druecken und loslassen.</li>
+                    <li data-i18n="recovery_3">BOOT loslassen.</li>
+                    <li data-i18n="recovery_4">Den Installer erneut starten.</li>
+                </ol>
+                <div class="warning-note"><svg><use href="#icon-alert"></use></svg><p data-i18n="erase_warning">Vollstaendiges Loeschen entfernt WLAN-, Roon-, Slot- und IR-Einstellungen.</p></div>
+            </div>
+            <div class="usb-figure" aria-hidden="true">
+                <svg><use href="#icon-usb"></use></svg>
+                <strong>ESP32-S3</strong>
+                <span>USB</span>
+            </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="downloads-title">
+            <div class="section-heading">
+                <h2 id="downloads-title" data-i18n="downloads_title">Firmwaredateien</h2>
+                <p data-i18n="downloads_intro">Factory fuer Erstinstallation und Recovery, OTA nur fuer bereits installierte Geraete.</p>
+            </div>
+            <div class="download-table" role="table" aria-label="Firmware downloads">
+                <div class="download-row table-head" role="row"><span data-i18n="file">Datei</span><span data-i18n="purpose">Verwendung</span><span data-i18n="checksum">SHA-256</span><span></span></div>
+                <div class="download-row" role="row">
+                    <strong id="factory-name">mrirr-factory-current.bin</strong><span data-i18n="factory_purpose">Erstinstallation / Recovery</span><code id="factory-sha">-</code><a id="factory-download" class="download-link disabled" aria-disabled="true"><svg><use href="#icon-download"></use></svg><span data-i18n="download">Download</span></a>
+                </div>
+                <div class="download-row" role="row">
+                    <strong id="ota-name">mrirr-ota-not-released.bin</strong><span data-i18n="ota_purpose">Lokales oder spaeteres Internet-Update</span><code id="ota-sha">-</code><a id="ota-download" class="download-link disabled" aria-disabled="true"><svg><use href="#icon-download"></use></svg><span data-i18n="download">Download</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section hardware-section" aria-labelledby="hardware-title">
+            <div class="section-heading">
+                <h2 id="hardware-title" data-i18n="hardware_title">Hardware und Verdrahtung</h2>
+                <p data-i18n="hardware_intro">Referenzaufbau mit ESP32-S3, PCM5102, GC9A01, TM1637, PCF8574T und IR-Empfaenger.</p>
+            </div>
+            <a class="wiring-preview" href="assets/mrirr-wiring.png" target="_blank" rel="noopener">
+                <img src="assets/mrirr-wiring.png" alt="MRIRR Schaltbild" data-i18n-alt="wiring_alt">
+                <span><span data-i18n="open_wiring">Schaltbild oeffnen</span><svg><use href="#icon-external"></use></svg></span>
+            </a>
+        </section>
+    </main>
+
+    <footer><span>MRIRR · Minimal Roon IR Remote</span><span data-i18n="footer_note">Firmware-Verteilung und Wiederherstellung</span></footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# Never publish firmware source or local development output from this repository.
+*.c
+*.cc
+*.cpp
+*.h
+*.hpp
+*.ino
+CMakeLists.txt
+sdkconfig*
+build/
+build-*/
+managed_components/
+.vscode/
+
+# Never publish credentials, device backups, signing material or crash data.
+*.key
+*.pem
+*.p12
+*.pfx
+*.der
+*.secret
+*.backup
+*.core
+*.elf
+*.map
+*.log
+
+# Firmware binaries belong in GitHub Releases. The current Factory image is
+# copied to docs/firmware only after its release audit.
+*.bin
+!docs/firmware/mrirr-factory-current.bin
