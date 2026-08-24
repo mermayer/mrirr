@@ -39,7 +39,7 @@ operation does not require a cloud account, phone app or companion process.
 - [Open the hardware and wiring reference](hardware/README.md)
 - [Read about Factory and OTA images](firmware/README.md)
 
-The current **stable release** is `0.4.1` for the documented ESP32-S3 N16R8
+The current **stable release** is `0.4.2` for the documented ESP32-S3 N16R8
 reference hardware. Existing MRIRR devices can install it through the signed
 internet update or a local OTA upload without replacing their configuration.
 
@@ -55,6 +55,11 @@ internet update or a local OTA upload without replacing their configuration.
    **Enable**.
 6. Open the MRIRR web interface, enter the Roon Core address when required,
    and load the available zones.
+
+During first-time setup, MRIRR exposes only the Wi-Fi configuration page. If
+the entered SSID or password does not establish a connection, the protected
+setup access point returns automatically after 45 seconds. The credentials can
+then be corrected without flashing the device again.
 
 The authorization is stored by Roon and normally only has to be granted once.
 If MRIRR reports that Roon is waiting for approval, return to the Extensions
@@ -246,11 +251,11 @@ never stored on GitHub.
 
 ## Project status
 
-MRIRR `0.4.1` is the first stable release. Roon control, Squeezebox playback,
+MRIRR has reached stable release status. Roon control, Squeezebox playback,
 physical and IR inputs, queue workflows, displays, configuration backup,
 browser installation and signed OTA updates have been exercised on the
-reference device. The version badge at the top shows the current stable
-release.
+reference device. Version `0.4.2` additionally protects first-time setup from
+invalid Wi-Fi credentials by restoring the setup access point automatically.
 
 Functional or documentation problems can be reported through GitHub Issues.
 Logs and screenshots must be checked for Wi-Fi credentials, IP addresses, Roon

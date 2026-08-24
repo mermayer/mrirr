@@ -49,5 +49,10 @@ signed application images. The online updater additionally validates project,
 board, release channel, version, image size and SHA-256 before installation.
 
 The regular public manifest follows the **stable channel**. Devices running the
-last public release candidate receive a one-time signed transition to `0.4.1`;
+last public release candidate receive a one-time signed transition to `0.4.2`;
 after restart they permanently follow the stable manifest.
+
+Factory firmware starts a reduced Wi-Fi setup interface when no credentials
+are stored. If saved credentials do not produce an IP address within 45
+seconds, MRIRR automatically restores the setup access point so they can be
+corrected without another USB installation.
