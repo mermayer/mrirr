@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark light">
-    <meta name="description" content="MRIRR Firmware installieren und wiederherstellen">
-    <title>MRIRR Firmware Installer</title>
+    <meta name="description" content="MRIRR Factory-Firmware installieren und wiederherstellen">
+    <title>MRIRR Factory Installer</title>
     <script>
         try {
             document.documentElement.dataset.theme = localStorage.getItem('mrirrInstallerTheme') === 'light' ? 'light' : 'dark';
@@ -30,7 +30,7 @@
     <header class="app-header">
         <a class="brand" href="#installer" aria-label="MRIRR">
             <span class="brand-mark" aria-hidden="true">MR</span>
-            <span><strong>MRIRR</strong><small data-i18n="brand_subtitle">Firmware &amp; Wiederherstellung</small></span>
+            <span><strong>MRIRR</strong><small data-i18n="brand_subtitle">Factory-Installation &amp; Recovery</small></span>
         </a>
         <div class="header-tools">
             <span id="release-badge" class="status-badge waiting"><span class="status-dot"></span><span data-i18n="preparing">Vorbereitung</span></span>
@@ -47,8 +47,8 @@
     <main>
         <section id="installer" class="install-section">
             <div class="install-copy">
-                <h1 data-i18n="title">Firmware installieren</h1>
-                <p class="lead" data-i18n="intro">Verbinde MRIRR per USB mit diesem Computer. Die Installation erfolgt direkt im Browser.</p>
+                <h1 data-i18n="title">MRIRR Factory-Installation</h1>
+                <p class="lead" data-i18n="intro">Nur fuer Erstinstallation und Recovery. Ein vorhandenes MRIRR wird normalerweise ueber seine eigene Firmwareseite aktualisiert.</p>
 
                 <div class="release-line">
                     <span data-i18n="release_label">Verfuegbare Version</span>
@@ -58,9 +58,14 @@
                     <a id="release-notes" class="inline-link" target="_blank" rel="noopener" hidden><span data-i18n="release_notes">Versionshinweise</span><svg><use href="#icon-external"></use></svg></a>
                 </div>
 
+                <div class="factory-warning" role="alert">
+                    <svg><use href="#icon-alert"></use></svg>
+                    <div><strong data-i18n="factory_warning_title">Keine normale Aktualisierung</strong><p data-i18n="factory_warning_text">Eine Factory-Installation kann alle WLAN-, Roon-, Slot- und IR-Einstellungen loeschen. Vorher ein Konfigurationsbackup exportieren. Fuer ein bestehendes MRIRR die Update-Alternativen unterhalb verwenden.</p></div>
+                </div>
+
                 <esp-web-install-button id="web-installer">
                     <button id="install-button" class="primary-button" slot="activate" type="button" disabled>
-                        <svg><use href="#icon-download"></use></svg><span data-i18n="install_button">MRIRR installieren</span>
+                        <svg><use href="#icon-download"></use></svg><span data-i18n="install_button">Factory-Installation starten</span>
                     </button>
                     <span slot="unsupported" class="inline-warning" data-i18n="unsupported">Dieser Browser unterstuetzt keine serielle Installation. Bitte Chrome oder Edge verwenden.</span>
                     <span slot="not-allowed" class="inline-warning" data-i18n="https_required">Der Installer muss ueber eine sichere HTTPS-Adresse geoeffnet werden.</span>
@@ -81,6 +86,24 @@
                 </dl>
                 <p class="compatibility-note" data-i18n="browser_note">Unterstuetzt werden aktuelle Desktop-Versionen von Chrome und Edge unter Windows, macOS und Linux.</p>
             </div>
+        </section>
+
+        <section class="content-section update-alternatives" aria-labelledby="update-alternatives-title">
+            <div class="section-heading">
+                <h2 id="update-alternatives-title" data-i18n="update_alternatives_title">Bestehendes MRIRR aktualisieren</h2>
+                <p data-i18n="update_alternatives_intro">Diese Wege erhalten die gespeicherte Konfiguration und sind fuer normale Firmwareupdates vorgesehen.</p>
+            </div>
+            <div class="update-methods">
+                <div>
+                    <span class="method-number">1</span>
+                    <div><strong data-i18n="online_update_title">Signiertes Internet-Update</strong><p data-i18n="online_update_text">Die lokale MRIRR-Weboberflaeche oeffnen und unter System &gt; Firmware aktualisieren nach Updates suchen. MRIRR prueft Manifest, Board, Groesse, SHA-256 und Signatur vor der Installation.</p></div>
+                </div>
+                <div>
+                    <span class="method-number">2</span>
+                    <div><strong data-i18n="local_ota_title">Lokaler OTA-Upload</strong><p data-i18n="local_ota_text">Auf derselben Firmwareseite eine passende mrirr-ota-Datei auswaehlen. Niemals das Factory-Image in den OTA-Upload laden.</p></div>
+                </div>
+            </div>
+            <a class="inline-link" href="#downloads"><span data-i18n="open_downloads">Zu den Firmwaredateien</span><svg><use href="#icon-download"></use></svg></a>
         </section>
 
         <section class="content-section" aria-labelledby="steps-title">
@@ -162,7 +185,7 @@
             </div>
         </section>
 
-        <section class="content-section" aria-labelledby="downloads-title">
+        <section id="downloads" class="content-section" aria-labelledby="downloads-title">
             <div class="section-heading">
                 <h2 id="downloads-title" data-i18n="downloads_title">Firmwaredateien</h2>
                 <p data-i18n="downloads_intro">Factory fuer Erstinstallation und Recovery, OTA nur fuer bereits installierte Geraete.</p>

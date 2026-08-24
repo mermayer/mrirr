@@ -129,6 +129,10 @@ h3 { margin: 0 0 16px; font-size: 17px; line-height: 1.3; letter-spacing: 0; }
 .inline-link:hover { text-decoration: underline; }
 .inline-link svg { width: 14px; height: 14px; }
 .muted { color: var(--muted); }
+.factory-warning { display: flex; align-items: flex-start; gap: 12px; max-width: 720px; margin: 0 0 20px; padding: 14px 15px; border: 1px solid color-mix(in srgb, var(--red) 52%, var(--border)); border-radius: 7px; background: var(--red-soft); color: var(--red); }
+.factory-warning > svg { flex: 0 0 21px; margin-top: 1px; }
+.factory-warning strong { display: block; margin-bottom: 3px; }
+.factory-warning p { margin: 0; color: var(--muted-strong); font-size: 13px; }
 .primary-button {
     display: inline-flex;
     align-items: center;
@@ -178,6 +182,11 @@ h3 { margin: 0 0 16px; font-size: 17px; line-height: 1.3; letter-spacing: 0; }
 .roon-activation dl > div { min-width: 0; }
 .roon-activation dt { color: var(--muted); font-size: 11px; font-weight: 750; text-transform: uppercase; }
 .roon-activation dd { margin: 4px 0 0; overflow-wrap: anywhere; font-weight: 750; }
+.update-methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px; margin-bottom: 24px; }
+.update-methods > div { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 14px; align-items: start; }
+.method-number { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid color-mix(in srgb, var(--green) 45%, var(--border)); border-radius: 7px; background: var(--green-soft); color: var(--green); font-weight: 800; }
+.update-methods strong { display: block; margin-bottom: 5px; }
+.update-methods p { margin: 0; color: var(--muted); }
 .driver-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; }
 .check-points { margin: 0; padding-left: 20px; color: var(--muted-strong); }
 .check-points li { margin: 0 0 12px; padding-left: 4px; }
@@ -228,6 +237,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; width: min(11
     .install-section { grid-template-columns: 1fr; gap: 34px; padding-top: 54px; }
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .roon-activation { align-items: flex-start; flex-direction: column; gap: 20px; }
+    .update-methods { grid-template-columns: 1fr; gap: 24px; }
     .driver-grid { grid-template-columns: 1fr; gap: 34px; }
     .flash-tool-note { align-items: flex-start; flex-direction: column; gap: 18px; }
     .split-section { grid-template-columns: 1fr; gap: 32px; }
