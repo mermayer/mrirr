@@ -154,12 +154,13 @@ brightness levels.
 
 ![Display configuration](assets/web-ui/03-displays.png)
 
-### Backup and restore
+### System, diagnostics and backup
 
-Download the complete configuration or restore it from a previously exported
-JSON file.
+Inspect live firmware, uptime, memory, PSRAM, network and hardware-service
+status. Download privacy-safe diagnostics, export or restore the configuration,
+restart MRIRR and open the separate firmware-management page.
 
-![System backup and restore](assets/web-ui/04-system-backup.png)
+![MRIRR system information, diagnostics and backup](assets/web-ui/04-system-backup.png)
 
 ## Hardware
 
