@@ -1,6 +1,10 @@
 # Web installer firmware
 
-The approved, versioned `mrirr-factory-v*.bin` file is placed in this directory
-only for GitHub Pages deployment. Until a release audit is complete, the
-installer reads `available: false` from `../release.json` and keeps its install
-button disabled.
+The approved, versioned `mrirr-factory-v*.bin` file in this directory is
+published only for GitHub Pages and the browser installer. OTA images remain
+immutable GitHub Release assets.
+
+The installer reads `../release.json` and enables installation only when its
+`available` field is true. Release staging sets that field only after the
+Factory image, signature, checksums, privacy checks and recovery package have
+passed the release audit.

@@ -1,6 +1,7 @@
 # Firmware releases
 
-Compiled firmware is distributed through GitHub Releases. Every approved
+Compiled firmware is distributed through
+[GitHub Releases](https://github.com/mermayer/mrirr/releases). Every published
 release contains:
 
 ```text
@@ -20,6 +21,11 @@ initial OTA data and the application.
 A Factory installation can erase existing device settings. Export a
 configuration backup first when the device is still reachable.
 
+For a new device, use the
+[browser installer](https://mermayer.github.io/mrirr/). It selects the approved
+Factory image from the public release metadata and writes the complete flash
+layout over USB.
+
 ## OTA image
 
 `mrirr-ota` is used only for updating an already installed MRIRR device. It does
@@ -27,7 +33,25 @@ not replace the bootloader or partition table and retains the device settings.
 
 Never upload a Factory image through the device's normal OTA page.
 
+MRIRR supports two user-initiated update paths:
+
+- upload the matching OTA file from the local firmware page
+- check the signed public manifest over HTTPS and install the offered image
+
+Internet updates are never installed automatically. During an online update,
+MRIRR enters maintenance mode, stops normal services, displays `UPdt` / update
+status and restarts after the image has been written.
+
 ## Verification
 
-Compare the SHA-256 checksum before a manual installation. Signed firmware will
-become mandatory before internet updates are enabled.
+Compare the SHA-256 checksum before a manual installation. Release builds use
+signed application images. The online updater additionally validates project,
+board, release channel, version, image size and SHA-256 before installation.
+
+The public manifest currently follows the **test channel** and may offer
+prereleases. Stable firmware has not yet been declared.
+
+> **RC3 update note:** The RC3 web interface can show a failure after a
+> successful update to RC4. Wait for the automatic restart and check the
+> installed version on the System page. The display-state correction is part
+> of RC4 and applies to later updates.

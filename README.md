@@ -4,6 +4,10 @@
 
 **A tactile Roon controller, learned IR remote and Squeezebox audio endpoint in one compact ESP32-S3 device.**
 
+[![Firmware](https://img.shields.io/github/v/release/mermayer/mrirr?include_prereleases&label=firmware)](https://github.com/mermayer/mrirr/releases)
+[![Web installer](https://img.shields.io/badge/web%20installer-open-15845d)](https://mermayer.github.io/mrirr/)
+[![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v6.0.1-cc3d3d)](https://github.com/espressif/esp-idf)
+
 <p align="center">
   <img src="assets/product/mrirr-artwork.png" alt="MRIRR with album artwork on its round display" width="860">
 </p>
@@ -22,17 +26,33 @@ operation does not require a cloud account, phone app or companion process.
 > **Enable**. MRIRR cannot load zones or control Roon until this extension has
 > been authorized.
 
-> This private repository is the distribution and documentation area for
-> MRIRR. Firmware source code is intentionally not included.
+> This public repository is the official distribution and documentation area
+> for MRIRR. It contains the browser installer, compiled firmware releases,
+> checksums, hardware documentation and presentation images. Firmware source
+> code and internal development material are intentionally not included.
+
+## Start here
+
+- [Install or recover MRIRR in the browser](https://mermayer.github.io/mrirr/)
+- [Download firmware and read release notes](https://github.com/mermayer/mrirr/releases)
+- [Open the hardware and wiring reference](hardware/README.md)
+- [Read about Factory and OTA images](firmware/README.md)
+
+The currently published firmware belongs to the public **test channel**. It is
+a prerelease for the documented ESP32-S3 N16R8 reference hardware, not yet a
+stable general-purpose release.
 
 ## First-time setup
 
-1. Install the MRIRR Factory firmware and restart the device.
-2. Connect MRIRR to the local Wi-Fi network through its setup page.
-3. Open **Settings > Extensions** in Roon.
-4. Locate **Minimal Roon IR Remote** by **Senior Coder** and select
+1. Open the [MRIRR web installer](https://mermayer.github.io/mrirr/) in a
+   current desktop version of Chrome or Edge.
+2. Connect the ESP32-S3 with a USB data cable and install the Factory image.
+3. After restart, join `MRIRR-Setup-XXXXXX` with password `mrirr-setup`, then
+   open `http://192.168.4.1/` and enter the local Wi-Fi credentials.
+4. Open **Settings > Extensions** in Roon.
+5. Locate **Minimal Roon IR Remote** by **Senior Coder** and select
    **Enable**.
-5. Open the MRIRR web interface, enter the Roon Core address when required,
+6. Open the MRIRR web interface, enter the Roon Core address when required,
    and load the available zones.
 
 The authorization is stored by Roon and normally only has to be granted once.
@@ -193,36 +213,53 @@ IR receiver -----------|--> slot actions --> selected Roon zone
 
 ## Installation and firmware
 
-This repository is prepared to provide:
+This public repository provides:
 
 - browser-based first installation and USB recovery
 - compiled Factory and OTA images through GitHub Releases
 - checksums and bilingual release notes
 - hardware documentation and wiring diagrams
-- signed internet updates after the update path has been fully tested
+- manually started, signed internet updates over HTTPS
 
 The browser installer is intended for current desktop versions of Chrome and
-Edge on Windows, macOS and Linux. It remains locked until a release image has
-passed the privacy and recovery checks. See
-[firmware files and releases](firmware/README.md) for the planned package
-layout.
+Edge on Windows, macOS and Linux. The install button is enabled only when the
+published Factory image and release metadata have passed the release audit.
+See [firmware files and releases](firmware/README.md) for image selection,
+verification and recovery notes.
 
 The browser installer and public update manifests are published from the
 `docs` directory through [GitHub Pages](https://mermayer.github.io/mrirr/).
 Compiled firmware remains versioned as immutable GitHub Release assets.
 
+MRIRR never installs an internet update automatically. The user starts the
+check and installation from the device's firmware page. Before writing an OTA
+image, MRIRR validates the release channel, board identity, expected size,
+SHA-256 checksum and firmware signature.
+
+> [!NOTE]
+> When updating from `0.4.1-rc3` to `0.4.1-rc4`, the old RC3 browser interface
+> can report a failed update even though installation succeeded. Wait for the
+> automatic restart and verify `0.4.1-rc4` on the System page. RC4 contains the
+> corrected update-state display for subsequent updates.
+
 ## Privacy and security
 
 Published files must never contain Wi-Fi credentials, Roon tokens, device
-backups, private signing keys or other personal information. The private
-firmware signing key is never stored on GitHub.
+backups, private signing keys or other personal information. Release builds
+exclude local development credentials, and the private firmware signing key is
+never stored on GitHub.
 
 ## Project status
 
-MRIRR is currently in private hardware testing. The core Roon control,
-Squeezebox playback, physical and IR inputs, queue workflows, displays and
-configuration backup have been exercised on the reference device. No public
-Factory firmware has been approved yet.
+MRIRR is currently in public prerelease testing. The core Roon control,
+Squeezebox playback, physical and IR inputs, queue workflows, displays,
+configuration backup, browser installation and signed OTA path have been
+exercised on the reference device. The version badge at the top shows the
+current test release; no stable release has been declared yet.
+
+Functional or documentation problems can be reported through GitHub Issues.
+Logs and screenshots must be checked for Wi-Fi credentials, IP addresses, Roon
+data and other personal information before they are attached publicly.
 
 MRIRR is an independent project and is not affiliated with or endorsed by
 Roon Labs. Roon is a trademark of Roon Labs.

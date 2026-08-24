@@ -2,7 +2,7 @@ const translations = {
     de: {
         page_title: 'MRIRR Firmware Installer', brand_subtitle: 'Firmware & Wiederherstellung', preparing: 'Vorbereitung', ready: 'Bereit',
         title: 'Firmware installieren', intro: 'Verbinde MRIRR per USB mit diesem Computer. Die Installation erfolgt direkt im Browser.',
-        release_label: 'Verfuegbare Version', install_button: 'MRIRR installieren', unsupported: 'Dieser Browser unterstuetzt keine serielle Installation. Bitte Chrome oder Edge verwenden.',
+        release_label: 'Verfuegbare Version', release_notes: 'Versionshinweise', test_channel: 'Testkanal', test_channel_notice: 'Dies ist eine oeffentliche Testversion fuer die dokumentierte Referenzhardware, noch keine stabile Freigabe.', install_button: 'MRIRR installieren', unsupported: 'Dieser Browser unterstuetzt keine serielle Installation. Bitte Chrome oder Edge verwenden.',
         https_required: 'Der Installer muss ueber eine sichere HTTPS-Adresse geoeffnet werden.', not_released: 'Das Factory-Image ist noch nicht fuer Tests freigegeben.',
         install_ready: 'Das Factory-Image ist freigegeben. MRIRR kann installiert werden.', compatibility: 'Systempruefung', secure_connection: 'Sichere Verbindung',
         serial_access: 'Serieller Browserzugriff', firmware_release: 'Firmwarefreigabe', browser_note: 'Unterstuetzt werden aktuelle Desktop-Versionen von Chrome und Edge unter Windows, macOS und Linux.',
@@ -17,14 +17,14 @@ const translations = {
         recovery_intro: 'Nur erforderlich, wenn der ESP32-S3 nicht automatisch erkannt wird.', recovery_1: 'BOOT gedrueckt halten.', recovery_2: 'RESET kurz druecken und loslassen.',
         recovery_3: 'BOOT loslassen.', recovery_4: 'Den Installer erneut starten.', erase_warning: 'Vollstaendiges Loeschen entfernt WLAN-, Roon-, Slot- und IR-Einstellungen.',
         downloads_title: 'Firmwaredateien', downloads_intro: 'Factory fuer Erstinstallation und Recovery, OTA nur fuer bereits installierte Geraete.', file: 'Datei', purpose: 'Verwendung',
-        checksum: 'SHA-256', factory_purpose: 'Erstinstallation / Recovery', ota_purpose: 'Lokales oder spaeteres Internet-Update', download: 'Download',
+        checksum: 'SHA-256', factory_purpose: 'Erstinstallation / Recovery', ota_purpose: 'Lokales oder signiertes Internet-Update', download: 'Download',
         hardware_title: 'Hardware und Verdrahtung', hardware_intro: 'Referenzaufbau mit ESP32-S3, PCM5102, GC9A01, TM1637, PCF8574T und IR-Empfaenger.',
-        wiring_alt: 'MRIRR Schaltbild', open_wiring: 'Schaltbild oeffnen', footer_note: 'Firmware-Verteilung und Wiederherstellung'
+        wiring_alt: 'MRIRR Schaltbild', open_wiring: 'Schaltbild oeffnen', repository: 'GitHub-Repository', releases: 'Firmware-Releases', footer_note: 'Firmware-Verteilung und Wiederherstellung'
     },
     en: {
         page_title: 'MRIRR Firmware Installer', brand_subtitle: 'Firmware & recovery', preparing: 'Preparing', ready: 'Ready',
         title: 'Install firmware', intro: 'Connect MRIRR to this computer by USB. Installation runs directly in the browser.',
-        release_label: 'Available version', install_button: 'Install MRIRR', unsupported: 'This browser does not support serial installation. Please use Chrome or Edge.',
+        release_label: 'Available version', release_notes: 'Release notes', test_channel: 'Test channel', test_channel_notice: 'This is a public test build for the documented reference hardware, not yet a stable release.', install_button: 'Install MRIRR', unsupported: 'This browser does not support serial installation. Please use Chrome or Edge.',
         https_required: 'The installer must be opened from a secure HTTPS address.', not_released: 'The Factory image has not been approved for testing yet.',
         install_ready: 'The Factory image is approved. MRIRR is ready to install.', compatibility: 'System check', secure_connection: 'Secure connection',
         serial_access: 'Browser serial access', firmware_release: 'Firmware approval', browser_note: 'Current desktop versions of Chrome and Edge on Windows, macOS and Linux are supported.',
@@ -39,9 +39,9 @@ const translations = {
         recovery_intro: 'Only required when the ESP32-S3 is not detected automatically.', recovery_1: 'Press and hold BOOT.', recovery_2: 'Press and release RESET.',
         recovery_3: 'Release BOOT.', recovery_4: 'Start the installer again.', erase_warning: 'A full erase removes Wi-Fi, Roon, slot and IR settings.',
         downloads_title: 'Firmware files', downloads_intro: 'Factory is for first installation and recovery. OTA is only for devices already running MRIRR.', file: 'File', purpose: 'Purpose',
-        checksum: 'SHA-256', factory_purpose: 'First installation / recovery', ota_purpose: 'Local or future internet update', download: 'Download',
+        checksum: 'SHA-256', factory_purpose: 'First installation / recovery', ota_purpose: 'Local or signed internet update', download: 'Download',
         hardware_title: 'Hardware and wiring', hardware_intro: 'Reference build with ESP32-S3, PCM5102, GC9A01, TM1637, PCF8574T and IR receiver.',
-        wiring_alt: 'MRIRR wiring diagram', open_wiring: 'Open wiring diagram', footer_note: 'Firmware distribution and recovery'
+        wiring_alt: 'MRIRR wiring diagram', open_wiring: 'Open wiring diagram', repository: 'GitHub repository', releases: 'Firmware releases', footer_note: 'Firmware distribution and recovery'
     }
 };
 
@@ -123,6 +123,21 @@ function updateReleaseUi() {
     document.getElementById('ota-name').textContent = release.ota?.filename || 'mrirr-ota-not-released.bin';
     document.getElementById('factory-sha').textContent = release.factory?.sha256 || '-';
     document.getElementById('ota-sha').textContent = release.ota?.sha256 || '-';
+
+    const testChannel = release.channel === 'test';
+    const channelBadge = document.getElementById('release-channel');
+    channelBadge.hidden = !testChannel;
+    channelBadge.textContent = testChannel ? t('test_channel') : '';
+    document.getElementById('test-channel-note').hidden = !testChannel;
+
+    const releaseNotes = document.getElementById('release-notes');
+    if (release.release_notes) {
+        releaseNotes.href = release.release_notes;
+        releaseNotes.hidden = false;
+    } else {
+        releaseNotes.removeAttribute('href');
+        releaseNotes.hidden = true;
+    }
 
     const factoryUrl = available ? `firmware/${release.factory.filename}` : '';
     configureDownload('factory-download', factoryUrl);

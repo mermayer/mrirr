@@ -54,6 +54,8 @@
                     <span data-i18n="release_label">Verfuegbare Version</span>
                     <strong id="release-version">-</strong>
                     <span id="release-date" class="muted"></span>
+                    <span id="release-channel" class="channel-badge" hidden></span>
+                    <a id="release-notes" class="inline-link" target="_blank" rel="noopener" hidden><span data-i18n="release_notes">Versionshinweise</span><svg><use href="#icon-external"></use></svg></a>
                 </div>
 
                 <esp-web-install-button id="web-installer">
@@ -65,6 +67,7 @@
                 </esp-web-install-button>
 
                 <p id="install-status" class="install-status" role="status" data-i18n="not_released">Das Factory-Image ist noch nicht fuer Tests freigegeben.</p>
+                <p id="test-channel-note" class="channel-note" data-i18n="test_channel_notice" hidden>Dies ist eine oeffentliche Testversion fuer die dokumentierte Referenzhardware, noch keine stabile Freigabe.</p>
             </div>
 
             <div class="compatibility" aria-labelledby="compatibility-title">
@@ -136,7 +139,7 @@
                     <strong id="factory-name">mrirr-factory-current.bin</strong><span data-i18n="factory_purpose">Erstinstallation / Recovery</span><code id="factory-sha">-</code><a id="factory-download" class="download-link disabled" aria-disabled="true"><svg><use href="#icon-download"></use></svg><span data-i18n="download">Download</span></a>
                 </div>
                 <div class="download-row" role="row">
-                    <strong id="ota-name">mrirr-ota-not-released.bin</strong><span data-i18n="ota_purpose">Lokales oder spaeteres Internet-Update</span><code id="ota-sha">-</code><a id="ota-download" class="download-link disabled" aria-disabled="true"><svg><use href="#icon-download"></use></svg><span data-i18n="download">Download</span></a>
+                    <strong id="ota-name">mrirr-ota-not-released.bin</strong><span data-i18n="ota_purpose">Lokales oder signiertes Internet-Update</span><code id="ota-sha">-</code><a id="ota-download" class="download-link disabled" aria-disabled="true"><svg><use href="#icon-download"></use></svg><span data-i18n="download">Download</span></a>
                 </div>
             </div>
         </section>
@@ -153,6 +156,9 @@
         </section>
     </main>
 
-    <footer><span>MRIRR · Minimal Roon IR Remote</span><span data-i18n="footer_note">Firmware-Verteilung und Wiederherstellung</span></footer>
+    <footer>
+        <span>MRIRR &middot; Minimal Roon IR Remote</span>
+        <span class="footer-links"><a href="https://github.com/mermayer/mrirr" target="_blank" rel="noopener" data-i18n="repository">GitHub-Repository</a><a href="https://github.com/mermayer/mrirr/releases" target="_blank" rel="noopener" data-i18n="releases">Firmware-Releases</a><span data-i18n="footer_note">Firmware-Verteilung und Wiederherstellung</span></span>
+    </footer>
 </body>
 </html>
