@@ -5,6 +5,9 @@ with 16 MB flash and 8 MB PSRAM.
 
 ![MRIRR wiring diagram](mrirr-wiring.png)
 
+The editable vector version is available as
+[mrirr-wiring.svg](mrirr-wiring.svg).
+
 ## Pin assignment
 
 | Function | ESP32-S3 pin | Module pin |
