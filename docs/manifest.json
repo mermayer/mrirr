@@ -1,17 +1,17 @@
 {
-  "name": "MRIRR",
-  "version": "not-released",
-  "new_install_prompt_erase": true,
-  "new_install_improv_wait_time": 30,
-  "builds": [
-    {
-      "chipFamily": "ESP32-S3",
-      "parts": [
-        {
-          "path": "firmware/mrirr-factory-current.bin",
-          "offset": 0
-        }
-      ]
-    }
-  ]
+    "name":  "MRIRR",
+    "version":  "0.4.0-rc8",
+    "new_install_prompt_erase":  true,
+    "new_install_improv_wait_time":  30,
+    "builds":  [
+                   {
+                       "chipFamily":  "ESP32-S3",
+                       "parts":  [
+                                     {
+                                         "path":  "firmware/mrirr-factory-v0.4.0-rc8.bin",
+                                         "offset":  0
+                                     }
+                                 ]
+                   }
+               ]
 }

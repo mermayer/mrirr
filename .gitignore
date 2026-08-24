@@ -28,4 +28,4 @@ managed_components/
 # Firmware binaries belong in GitHub Releases. The current Factory image is
 # copied to docs/firmware only after its release audit.
 *.bin
-!docs/firmware/mrirr-factory-current.bin
+!docs/firmware/mrirr-factory-v*.bin
