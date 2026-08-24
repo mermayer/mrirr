@@ -4,7 +4,7 @@
 
 **A tactile Roon controller, learned IR remote and Squeezebox audio endpoint in one compact ESP32-S3 device.**
 
-[![Firmware](https://img.shields.io/github/v/release/mermayer/mrirr?include_prereleases&label=firmware)](https://github.com/mermayer/mrirr/releases)
+[![Firmware](https://img.shields.io/github/v/release/mermayer/mrirr?label=firmware)](https://github.com/mermayer/mrirr/releases)
 [![Web installer](https://img.shields.io/badge/web%20installer-open-15845d)](https://mermayer.github.io/mrirr/)
 [![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v6.0.1-cc3d3d)](https://github.com/espressif/esp-idf)
 
@@ -39,9 +39,9 @@ operation does not require a cloud account, phone app or companion process.
 - [Open the hardware and wiring reference](hardware/README.md)
 - [Read about Factory and OTA images](firmware/README.md)
 
-The currently published firmware belongs to the public **test channel**. It is
-a prerelease for the documented ESP32-S3 N16R8 reference hardware, not yet a
-stable general-purpose release.
+The current **stable release** is `0.4.1` for the documented ESP32-S3 N16R8
+reference hardware. Existing MRIRR devices can install it through the signed
+internet update or a local OTA upload without replacing their configuration.
 
 ## First-time setup
 
@@ -237,12 +237,6 @@ check and installation from the device's firmware page. Before writing an OTA
 image, MRIRR validates the release channel, board identity, expected size,
 SHA-256 checksum and firmware signature.
 
-> [!NOTE]
-> When updating from `0.4.1-rc3` to `0.4.1-rc4`, the old RC3 browser interface
-> can report a failed update even though installation succeeded. Wait for the
-> automatic restart and verify `0.4.1-rc4` on the System page. RC4 contains the
-> corrected update-state display for subsequent updates.
-
 ## Privacy and security
 
 Published files must never contain Wi-Fi credentials, Roon tokens, device
@@ -252,11 +246,11 @@ never stored on GitHub.
 
 ## Project status
 
-MRIRR is currently in public prerelease testing. The core Roon control,
-Squeezebox playback, physical and IR inputs, queue workflows, displays,
-configuration backup, browser installation and signed OTA path have been
-exercised on the reference device. The version badge at the top shows the
-current test release; no stable release has been declared yet.
+MRIRR `0.4.1` is the first stable release. Roon control, Squeezebox playback,
+physical and IR inputs, queue workflows, displays, configuration backup,
+browser installation and signed OTA updates have been exercised on the
+reference device. The version badge at the top shows the current stable
+release.
 
 Functional or documentation problems can be reported through GitHub Issues.
 Logs and screenshots must be checked for Wi-Fi credentials, IP addresses, Roon

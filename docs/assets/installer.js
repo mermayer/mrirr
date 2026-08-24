@@ -2,7 +2,7 @@ const translations = {
     de: {
         page_title: 'MRIRR Factory Installer', brand_subtitle: 'Factory-Installation & Recovery', preparing: 'Vorbereitung', ready: 'Bereit',
         title: 'MRIRR Factory-Installation', intro: 'Nur fuer Erstinstallation und Recovery. Ein vorhandenes MRIRR wird normalerweise ueber seine eigene Firmwareseite aktualisiert.',
-        release_label: 'Verfuegbare Version', release_notes: 'Versionshinweise', test_channel: 'Testkanal', test_channel_notice: 'Dies ist eine oeffentliche Testversion fuer die dokumentierte Referenzhardware, noch keine stabile Freigabe.', install_button: 'Factory-Installation starten', unsupported: 'Dieser Browser unterstuetzt keine serielle Installation. Bitte Chrome oder Edge verwenden.',
+        release_label: 'Verfuegbare Version', release_notes: 'Versionshinweise', test_channel: 'Testkanal', stable_channel: 'Stable', test_channel_notice: 'Dies ist eine oeffentliche Testversion fuer die dokumentierte Referenzhardware, noch keine stabile Freigabe.', install_button: 'Factory-Installation starten', unsupported: 'Dieser Browser unterstuetzt keine serielle Installation. Bitte Chrome oder Edge verwenden.',
         https_required: 'Der Installer muss ueber eine sichere HTTPS-Adresse geoeffnet werden.', not_released: 'Das Factory-Image ist noch nicht fuer Tests freigegeben.',
         install_ready: 'Das Factory-Image ist freigegeben. Backup- und Loeschhinweis beachten.', compatibility: 'Systempruefung', secure_connection: 'Sichere Verbindung',
         serial_access: 'Serieller Browserzugriff', firmware_release: 'Firmwarefreigabe', browser_note: 'Unterstuetzt werden aktuelle Desktop-Versionen von Chrome und Edge unter Windows, macOS und Linux.',
@@ -38,7 +38,7 @@ const translations = {
     en: {
         page_title: 'MRIRR Factory Installer', brand_subtitle: 'Factory installation & recovery', preparing: 'Preparing', ready: 'Ready',
         title: 'MRIRR factory installation', intro: 'For first installation and recovery only. An existing MRIRR is normally updated from its own firmware page.',
-        release_label: 'Available version', release_notes: 'Release notes', test_channel: 'Test channel', test_channel_notice: 'This is a public test build for the documented reference hardware, not yet a stable release.', install_button: 'Start factory installation', unsupported: 'This browser does not support serial installation. Please use Chrome or Edge.',
+        release_label: 'Available version', release_notes: 'Release notes', test_channel: 'Test channel', stable_channel: 'Stable', test_channel_notice: 'This is a public test build for the documented reference hardware, not yet a stable release.', install_button: 'Start factory installation', unsupported: 'This browser does not support serial installation. Please use Chrome or Edge.',
         https_required: 'The installer must be opened from a secure HTTPS address.', not_released: 'The Factory image has not been approved for testing yet.',
         install_ready: 'The Factory image is approved. Read the backup and erase warning first.', compatibility: 'System check', secure_connection: 'Secure connection',
         serial_access: 'Browser serial access', firmware_release: 'Firmware approval', browser_note: 'Current desktop versions of Chrome and Edge on Windows, macOS and Linux are supported.',
@@ -153,9 +153,11 @@ function updateReleaseUi() {
     document.getElementById('ota-sha').textContent = release.ota?.sha256 || '-';
 
     const testChannel = release.channel === 'test';
+    const stableChannel = release.channel === 'stable';
     const channelBadge = document.getElementById('release-channel');
-    channelBadge.hidden = !testChannel;
-    channelBadge.textContent = testChannel ? t('test_channel') : '';
+    channelBadge.hidden = !testChannel && !stableChannel;
+    channelBadge.classList.toggle('stable', stableChannel);
+    channelBadge.textContent = testChannel ? t('test_channel') : stableChannel ? t('stable_channel') : '';
     document.getElementById('test-channel-note').hidden = !testChannel;
 
     const releaseNotes = document.getElementById('release-notes');

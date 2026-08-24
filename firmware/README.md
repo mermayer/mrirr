@@ -48,10 +48,6 @@ Compare the SHA-256 checksum before a manual installation. Release builds use
 signed application images. The online updater additionally validates project,
 board, release channel, version, image size and SHA-256 before installation.
 
-The public manifest currently follows the **test channel** and may offer
-prereleases. Stable firmware has not yet been declared.
-
-> **RC3 update note:** The RC3 web interface can show a failure after a
-> successful update to RC4. Wait for the automatic restart and check the
-> installed version on the System page. The display-state correction is part
-> of RC4 and applies to later updates.
+The regular public manifest follows the **stable channel**. Devices running the
+last public release candidate receive a one-time signed transition to `0.4.1`;
+after restart they permanently follow the stable manifest.

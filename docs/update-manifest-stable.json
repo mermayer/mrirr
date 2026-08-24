@@ -2,7 +2,7 @@
     "schema":  1,
     "project":  "mrirr",
     "board":  "esp32s3-n16r8",
-    "channel":  "test",
+    "channel":  "stable",
     "version":  "0.4.1",
     "secure_version":  0,
     "signed":  true,
