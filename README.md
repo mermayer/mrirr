@@ -34,6 +34,7 @@ operation does not require a cloud account, phone app or companion process.
 ## Start here
 
 - [Install or recover MRIRR in the browser](https://mermayer.github.io/mrirr/)
+- [USB and driver troubleshooting](https://mermayer.github.io/mrirr/#usb-help)
 - [Download firmware and read release notes](https://github.com/mermayer/mrirr/releases)
 - [Open the hardware and wiring reference](hardware/README.md)
 - [Read about Factory and OTA images](firmware/README.md)

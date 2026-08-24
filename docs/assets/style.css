@@ -120,6 +120,7 @@ main { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 h1, h2, p { margin-top: 0; }
 h1 { max-width: 700px; margin-bottom: 14px; font-size: clamp(38px, 5vw, 60px); line-height: 1.03; letter-spacing: 0; }
 h2 { margin-bottom: 8px; font-size: 25px; line-height: 1.2; letter-spacing: 0; }
+h3 { margin: 0 0 16px; font-size: 17px; line-height: 1.3; letter-spacing: 0; }
 .lead { max-width: 680px; margin-bottom: 27px; color: var(--muted-strong); font-size: 18px; }
 .release-line { display: flex; flex-wrap: wrap; gap: 9px 14px; align-items: center; margin-bottom: 22px; color: var(--muted); font-size: 13px; }
 .release-line strong { color: var(--text); }
@@ -177,6 +178,22 @@ h2 { margin-bottom: 8px; font-size: 25px; line-height: 1.2; letter-spacing: 0; }
 .roon-activation dl > div { min-width: 0; }
 .roon-activation dt { color: var(--muted); font-size: 11px; font-weight: 750; text-transform: uppercase; }
 .roon-activation dd { margin: 4px 0 0; overflow-wrap: anywhere; font-weight: 750; }
+.driver-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; }
+.check-points { margin: 0; padding-left: 20px; color: var(--muted-strong); }
+.check-points li { margin: 0 0 12px; padding-left: 4px; }
+.driver-list { margin: 0; }
+.driver-list > div { padding: 0 0 14px; }
+.driver-list > div + div { padding-top: 14px; border-top: 1px solid var(--border); }
+.driver-list dt { margin-bottom: 4px; color: var(--text); font-weight: 750; }
+.driver-list dd { margin: 0; color: var(--muted); line-height: 1.55; }
+.docs-link { margin-top: 8px; }
+.flash-tool-note { display: flex; align-items: center; justify-content: space-between; gap: 36px; margin-top: 34px; padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.flash-tool-note > div { max-width: 760px; }
+.flash-tool-note strong { display: block; margin-bottom: 5px; }
+.flash-tool-note p { margin: 0; color: var(--muted); }
+.external-button { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--border-strong); border-radius: 7px; color: var(--text); font-size: 12px; font-weight: 750; text-decoration: none; }
+.external-button:hover { border-color: var(--accent); color: var(--accent-bright); }
+.external-button svg { width: 16px; height: 16px; }
 .split-section { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 70px; align-items: center; }
 .recovery-steps { margin: 0 0 24px; padding-left: 22px; }
 .recovery-steps li { margin: 8px 0; padding-left: 5px; }
@@ -211,6 +228,8 @@ footer { display: flex; justify-content: space-between; gap: 20px; width: min(11
     .install-section { grid-template-columns: 1fr; gap: 34px; padding-top: 54px; }
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .roon-activation { align-items: flex-start; flex-direction: column; gap: 20px; }
+    .driver-grid { grid-template-columns: 1fr; gap: 34px; }
+    .flash-tool-note { align-items: flex-start; flex-direction: column; gap: 18px; }
     .split-section { grid-template-columns: 1fr; gap: 32px; }
     .usb-figure { min-height: 180px; }
     .download-row { grid-template-columns: minmax(180px, 1fr) minmax(190px, 1fr) 110px; }
@@ -233,6 +252,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; width: min(11
     .download-row { grid-template-columns: 1fr; gap: 7px; margin-bottom: 12px; padding: 16px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface); }
     .download-row.table-head { display: none; }
     .download-link { width: 100%; margin-top: 7px; }
+    .external-button { width: 100%; }
     footer { flex-direction: column; }
     .footer-links { justify-content: flex-start; }
 }

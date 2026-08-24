@@ -107,6 +107,40 @@
             </div>
         </section>
 
+        <section id="usb-help" class="content-section" aria-labelledby="usb-help-title">
+            <div class="section-heading">
+                <h2 id="usb-help-title" data-i18n="usb_help_title">USB- und Treiberhilfe</h2>
+                <p data-i18n="usb_help_intro">Der Browser kann nur Anschluesse verwenden, die vom Betriebssystem bereits erkannt werden.</p>
+            </div>
+            <div class="driver-grid">
+                <div>
+                    <h3 data-i18n="connection_check_title">Zuerst pruefen</h3>
+                    <ul class="check-points">
+                        <li data-i18n="connection_check_1">Ein USB-Datenkabel verwenden. Reine Ladekabel uebertragen keine Firmware.</li>
+                        <li data-i18n="connection_check_2">MRIRR direkt an einen USB-Port des Computers anschliessen und bei Bedarf einen anderen Port testen.</li>
+                        <li data-i18n="connection_check_3">Seriellen Monitor, ESP-IDF und andere Programme schliessen, die den COM-Port geoeffnet haben.</li>
+                        <li data-i18n="connection_check_4">Im Browser den Anschluss auswaehlen, der nach dem Verbinden des ESP32-S3 neu erscheint.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 data-i18n="driver_title">Wann ein Treiber erforderlich ist</h3>
+                    <dl class="driver-list">
+                        <div><dt data-i18n="native_usb_label">Nativer ESP32-S3-USB</dt><dd data-i18n="native_usb_text">Windows 10/11 installiert den USB-Serial/JTAG-Treiber normalerweise automatisch. Linux und macOS benoetigen dafuer in der Regel keinen zusaetzlichen Treiber.</dd></div>
+                        <div><dt data-i18n="bridge_label">USB-UART-Bridge</dt><dd data-i18n="bridge_text">Bei CP210x, CH340/CH343 oder FTDI wird der Treiber meist automatisch installiert. Fehlt der Anschluss, muss der zum Board passende Herstellertreiber installiert werden.</dd></div>
+                        <div><dt data-i18n="linux_label">Linux-Zugriff</dt><dd data-i18n="linux_text">Der Benutzer benoetigt Zugriff auf serielle Geraete, je nach Distribution zum Beispiel ueber die Gruppe dialout oder eine passende udev-Regel.</dd></div>
+                    </dl>
+                    <a class="inline-link docs-link" href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html" target="_blank" rel="noopener"><span data-i18n="driver_docs">Espressif-Hinweise zu USB und seriellen Treibern</span><svg><use href="#icon-external"></use></svg></a>
+                </div>
+            </div>
+            <div class="flash-tool-note">
+                <div>
+                    <strong data-i18n="flash_tool_title">Manueller Windows-Fallback</strong>
+                    <p data-i18n="flash_tool_text">Wenn Web Serial trotz erkanntem COM-Port nicht funktioniert, kann das offizielle Espressif Flash Download Tool verwendet werden. Fuer MRIRR ist dabei ausschliesslich das Factory-Image vorgesehen; ein OTA-Image ist hier falsch.</p>
+                </div>
+                <a class="external-button" href="https://docs.espressif.com/projects/esp-test-tools/en/latest/esp32/production_stage/tools/flash_download_tool.html" target="_blank" rel="noopener"><span data-i18n="flash_tool_link">Flash Download Tool oeffnen</span><svg><use href="#icon-external"></use></svg></a>
+            </div>
+        </section>
+
         <section class="content-section split-section" aria-labelledby="recovery-title">
             <div>
                 <div class="section-heading">
