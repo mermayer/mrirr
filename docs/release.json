@@ -4,20 +4,20 @@
     "project":  "mrirr",
     "board":  "esp32s3-n16r8",
     "channel":  "test",
-    "version":  "0.4.0-rc8",
+    "version":  "0.4.0-rc11",
     "published":  "2026-08-24",
     "signed":  true,
     "manifest":  "manifest.json",
     "factory":  {
-                    "filename":  "mrirr-factory-v0.4.0-rc8.bin",
+                    "filename":  "mrirr-factory-v0.4.0-rc11.bin",
                     "size":  1642496,
-                    "sha256":  "d610569bf58eac896564b18b50c838d2f382a3e3e125024bee37caed8805764e"
+                    "sha256":  "8b6db73cc4d99fb5e7083cef92c5766b135bbdab0d03f757d9fdcf279c88ad59"
                 },
     "ota":  {
-                "filename":  "mrirr-ota-v0.4.0-rc8.bin",
-                "url":  "https://github.com/mermayer/mrirr/releases/download/v0.4.0-rc8/mrirr-ota-v0.4.0-rc8.bin",
+                "filename":  "mrirr-ota-v0.4.0-rc11.bin",
+                "url":  "https://github.com/mermayer/mrirr/releases/download/v0.4.0-rc11/mrirr-ota-v0.4.0-rc11.bin",
                 "size":  1576960,
-                "sha256":  "5bcd86cfb27629e69048131b83840b487f7839024f61f95be6942e9140f27b29"
+                "sha256":  "dad944c14d4323d0aa378e222927c373ea99750d50fd8f52cf4570adfcb2c6b4"
             },
-    "release_notes":  "https://github.com/mermayer/mrirr/releases/tag/v0.4.0-rc8"
+    "release_notes":  "https://github.com/mermayer/mrirr/releases/tag/v0.4.0-rc11"
 }
