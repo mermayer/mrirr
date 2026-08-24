@@ -3,12 +3,12 @@
     "project":  "mrirr",
     "board":  "esp32s3-n16r8",
     "channel":  "test",
-    "version":  "0.4.0-rc11",
+    "version":  "0.4.0-rc12",
     "secure_version":  0,
     "signed":  true,
-    "url":  "https://github.com/mermayer/mrirr/releases/download/v0.4.0-rc11/mrirr-ota-v0.4.0-rc11.bin",
+    "url":  "https://github.com/mermayer/mrirr/releases/download/v0.4.0-rc12/mrirr-ota-v0.4.0-rc12.bin",
     "size":  1576960,
-    "sha256":  "dad944c14d4323d0aa378e222927c373ea99750d50fd8f52cf4570adfcb2c6b4",
+    "sha256":  "c10af9bb7ba63e633c776613d152da04fd901249c1759fc762bb20022eca6470",
     "mandatory":  false,
-    "notes_url":  "https://github.com/mermayer/mrirr/releases/tag/v0.4.0-rc11"
+    "notes_url":  "https://github.com/mermayer/mrirr/releases/tag/v0.4.0-rc12"
 }
