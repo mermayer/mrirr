@@ -21,11 +21,16 @@ until an audited image without private Wi-Fi credentials is available.
 
 ## Web installer
 
-After GitHub Pages has been enabled, the installer will be available at:
+The installer is prepared for this address:
 
 ```text
 https://mermayer.github.io/mrirr/
 ```
+
+GitHub Pages is not active yet because the current account plan does not
+support Pages for a private repository. The repository remains private. The
+site can be enabled from the `main` branch and `/docs` folder after a plan
+upgrade, or after a separate public installer repository has been approved.
 
 The installer is designed for current desktop versions of Chrome and Edge on
 Windows, macOS and Linux.
