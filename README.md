@@ -207,9 +207,9 @@ passed the privacy and recovery checks. See
 [firmware files and releases](firmware/README.md) for the planned package
 layout.
 
-GitHub Pages cannot currently be enabled for this private repository on the
-active account plan. The prepared installer can later be published from the
-`docs` directory or moved to a separate approved public installer repository.
+The browser installer and public update manifests are published from the
+`docs` directory through [GitHub Pages](https://mermayer.github.io/mrirr/).
+Compiled firmware remains versioned as immutable GitHub Release assets.
 
 ## Privacy and security
 
