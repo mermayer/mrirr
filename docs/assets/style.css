@@ -159,11 +159,19 @@ h2 { margin-bottom: 8px; font-size: 25px; line-height: 1.2; letter-spacing: 0; }
 .compatibility-note { margin: 15px 0 0; color: var(--muted); font-size: 12px; }
 
 .content-section { padding: 62px 0; border-bottom: 1px solid var(--border); }
-.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; margin: 0; padding: 0; list-style: none; }
+.steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; margin: 0; padding: 0; list-style: none; }
 .steps li { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 13px; }
 .steps li > span { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border)); border-radius: 7px; background: var(--accent-soft); color: var(--accent-bright); font-weight: 800; }
 .steps strong { display: block; margin-bottom: 5px; }
 .steps p { margin: 0; color: var(--muted); font-size: 13px; }
+.roon-activation { display: flex; align-items: center; justify-content: space-between; gap: 34px; margin-top: 34px; padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.roon-activation > div { max-width: 610px; }
+.roon-activation strong { color: var(--accent-bright); }
+.roon-activation p { margin: 5px 0 0; color: var(--muted); }
+.roon-activation dl { display: grid; grid-template-columns: repeat(2, minmax(150px, 1fr)); gap: 28px; min-width: min(100%, 430px); margin: 0; }
+.roon-activation dl > div { min-width: 0; }
+.roon-activation dt { color: var(--muted); font-size: 11px; font-weight: 750; text-transform: uppercase; }
+.roon-activation dd { margin: 4px 0 0; overflow-wrap: anywhere; font-weight: 750; }
 .split-section { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 70px; align-items: center; }
 .recovery-steps { margin: 0 0 24px; padding-left: 22px; }
 .recovery-steps li { margin: 8px 0; padding-left: 5px; }
@@ -194,6 +202,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; width: min(11
     .status-badge { display: none; }
     .install-section { grid-template-columns: 1fr; gap: 34px; padding-top: 54px; }
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .roon-activation { align-items: flex-start; flex-direction: column; gap: 20px; }
     .split-section { grid-template-columns: 1fr; gap: 32px; }
     .usb-figure { min-height: 180px; }
     .download-row { grid-template-columns: minmax(180px, 1fr) minmax(190px, 1fr) 110px; }
@@ -210,6 +219,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; width: min(11
     .lead { font-size: 16px; }
     .primary-button { width: 100%; }
     .steps { grid-template-columns: 1fr; }
+    .roon-activation dl { grid-template-columns: 1fr; gap: 14px; width: 100%; min-width: 0; }
     .content-section { padding: 46px 0; }
     .download-table { border-top: 0; }
     .download-row { grid-template-columns: 1fr; gap: 7px; margin-bottom: 12px; padding: 16px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface); }

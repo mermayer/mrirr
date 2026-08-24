@@ -15,8 +15,34 @@ with dedicated workflows for music, radio, playlists and long-form audiobooks.
 The device communicates directly with services on the local network. Normal
 operation does not require a cloud account, phone app or companion process.
 
+> [!IMPORTANT]
+> **Roon authorization is required after the first installation.** Open
+> **Roon > Settings > Extensions**, find the extension with creator
+> **Senior Coder** and name **Minimal Roon IR Remote**, then select
+> **Enable**. MRIRR cannot load zones or control Roon until this extension has
+> been authorized.
+
 > This private repository is the distribution and documentation area for
 > MRIRR. Firmware source code is intentionally not included.
+
+## First-time setup
+
+1. Install the MRIRR Factory firmware and restart the device.
+2. Connect MRIRR to the local Wi-Fi network through its setup page.
+3. Open **Settings > Extensions** in Roon.
+4. Locate **Minimal Roon IR Remote** by **Senior Coder** and select
+   **Enable**.
+5. Open the MRIRR web interface, enter the Roon Core address when required,
+   and load the available zones.
+
+The authorization is stored by Roon and normally only has to be granted once.
+If MRIRR reports that Roon is waiting for approval, return to the Extensions
+page and confirm that this entry is enabled:
+
+| Roon extension field | Required value |
+| --- | --- |
+| Creator | `Senior Coder` |
+| Name | `Minimal Roon IR Remote` |
 
 ## What MRIRR does
 
