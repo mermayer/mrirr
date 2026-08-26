@@ -11,6 +11,7 @@ SHA256SUMS.txt
 release-notes-de.md
 release-notes-en.md
 LICENSE.md
+NOTICE
 THIRD_PARTY_NOTICES.md
 LICENSES/
 ```
@@ -62,6 +63,7 @@ corrected without another USB installation.
 
 ## Licence files
 
-Every release includes the MRIRR Non-Commercial License and the notices and
-full texts for third-party components used by the compiled firmware. The
-licence files do not contain firmware source code or private signing material.
+Every release includes the unmodified PolyForm Noncommercial License 1.0.0,
+the MRIRR copyright notice, and the notices and full texts for third-party
+components used by the compiled firmware. The licence files do not contain
+firmware source code or private signing material.

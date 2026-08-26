@@ -2,7 +2,7 @@
 
 MRIRR 0.5.0 contains MRIRR-authored application code together with the
 following third-party components. Those components retain their own licence
-terms; the MRIRR Non-Commercial License does not replace them.
+terms; the PolyForm Noncommercial License 1.0.0 does not replace them.
 
 ## Active firmware dependencies
 

@@ -38,7 +38,8 @@ operation does not require a cloud account, phone app or companion process.
 - [Download firmware and read release notes](https://github.com/mermayer/mrirr/releases)
 - [Open the hardware and wiring reference](hardware/README.md)
 - [Read about Factory and OTA images](firmware/README.md)
-- [Read the MRIRR licence](LICENSE.md)
+- [Read the PolyForm Noncommercial licence](LICENSE.md)
+- [Read the MRIRR copyright notice](NOTICE)
 
 The current **stable release** is `0.5.0` for the documented ESP32-S3 N16R8
 reference hardware. Existing MRIRR devices can install it through the signed
@@ -248,10 +249,13 @@ SHA-256 checksum and firmware signature.
 
 ## Licence
 
-MRIRR-authored firmware and distribution material are provided under the
-[MRIRR Non-Commercial License](LICENSE.md). Private, educational and hobby use
-is permitted. Sale, paid redistribution and commercial product or service
-bundling require prior written permission.
+MRIRR-authored firmware and distribution software are provided under the
+unmodified [PolyForm Noncommercial License 1.0.0](LICENSE.md), a publicly
+documented standard licence for noncommercial software use. It permits use,
+modification and distribution for noncommercial purposes without requiring
+publication of source code. The MRIRR copyright statement is in [NOTICE](NOTICE).
+Other documentation and image content remains protected by copyright unless
+stated otherwise.
 
 ESP-IDF, cJSON, libFLAC, libogg and other identified dependencies retain their
 own licences. Copyright notices and full licence texts are collected in

@@ -9,5 +9,5 @@ The installer reads `../release.json` and enables installation only when its
 Factory image, signature, checksums, privacy checks and recovery package have
 passed the release audit.
 
-The MRIRR licence and third-party notices published with this image are
+The PolyForm licence, MRIRR copyright notice and third-party notices are
 available in [`../legal`](../legal/).
