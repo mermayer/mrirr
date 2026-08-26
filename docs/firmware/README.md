@@ -8,3 +8,6 @@ The installer reads `../release.json` and enables installation only when its
 `available` field is true. Release staging sets that field only after the
 Factory image, signature, checksums, privacy checks and recovery package have
 passed the release audit.
+
+The MRIRR licence and third-party notices published with this image are
+available in [`../legal`](../legal/).

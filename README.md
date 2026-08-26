@@ -13,7 +13,7 @@
 </p>
 
 MRIRR combines physical buttons, an infrared remote, local Roon control,
-Squeezebox playback and two displays. It is designed for everyday listening,
+native SqueezeSC playback and two displays. It is designed for everyday listening,
 with dedicated workflows for music, radio, playlists and long-form audiobooks.
 
 The device communicates directly with services on the local network. Normal
@@ -38,8 +38,9 @@ operation does not require a cloud account, phone app or companion process.
 - [Download firmware and read release notes](https://github.com/mermayer/mrirr/releases)
 - [Open the hardware and wiring reference](hardware/README.md)
 - [Read about Factory and OTA images](firmware/README.md)
+- [Read the MRIRR licence](LICENSE.md)
 
-The current **stable release** is `0.4.2` for the documented ESP32-S3 N16R8
+The current **stable release** is `0.5.0` for the documented ESP32-S3 N16R8
 reference hardware. Existing MRIRR devices can install it through the signed
 internet update or a local OTA upload without replacing their configuration.
 
@@ -79,12 +80,14 @@ interface shows live zone state, title and artist information and provides
 transport tests. One detected zone can be selected as the source for the
 device displays.
 
-### Squeezebox audio endpoint
+### Native SqueezeSC audio endpoint
 
 The ESP32-S3 also appears to Roon as a Squeezebox-compatible playback device.
-Audio is sent over I2S to a PCM5102 DAC. The current configuration deliberately
-uses a 44.1 kHz output target so Roon performs any required resampling before
-the stream reaches the device.
+MRIRR 0.5.0 uses its own SlimProto, HTTP streaming, FLAC/PCM and I2S pipeline;
+the former Squeezelite runtime is no longer part of the firmware. Audio is
+buffered in PSRAM and sent to the PCM5102 at a fixed 44.1 kHz, 24-bit stereo
+format using 32-bit I2S slots. Roon performs any required resampling before the
+stream reaches the device.
 
 ### Ten programmable slots
 
@@ -183,8 +186,9 @@ brightness levels.
 ### System, diagnostics and backup
 
 Inspect live firmware, uptime, memory, PSRAM, network and hardware-service
-status. Download privacy-safe diagnostics, export or restore the configuration,
-restart MRIRR and open the separate firmware-management page.
+status, including PCM-buffer, underrun, decoder, I2S and track-transition
+counters. Download privacy-safe diagnostics, export or restore the
+configuration, restart MRIRR and open the separate firmware-management page.
 
 ![MRIRR system information, diagnostics and backup](assets/web-ui/04-system-backup.png)
 
@@ -242,6 +246,19 @@ check and installation from the device's firmware page. Before writing an OTA
 image, MRIRR validates the release channel, board identity, expected size,
 SHA-256 checksum and firmware signature.
 
+## Licence
+
+MRIRR-authored firmware and distribution material are provided under the
+[MRIRR Non-Commercial License](LICENSE.md). Private, educational and hobby use
+is permitted. Sale, paid redistribution and commercial product or service
+bundling require prior written permission.
+
+ESP-IDF, cJSON, libFLAC, libogg and other identified dependencies retain their
+own licences. Copyright notices and full licence texts are collected in
+[Third-Party Notices](THIRD_PARTY_NOTICES.md) and the [`LICENSES`](LICENSES)
+directory. MRIRR 0.5.0 does not contain the former Squeezelite runtime,
+AirPlay/RAOP engine or WLED AudioReactive implementation.
+
 ## Privacy and security
 
 Published files must never contain Wi-Fi credentials, Roon tokens, device
@@ -254,8 +271,10 @@ never stored on GitHub.
 MRIRR has reached stable release status. Roon control, Squeezebox playback,
 physical and IR inputs, queue workflows, displays, configuration backup,
 browser installation and signed OTA updates have been exercised on the
-reference device. Version `0.4.2` additionally protects first-time setup from
-invalid Wi-Fi credentials by restoring the setup access point automatically.
+reference device. Version `0.5.0` introduces the native 44.1-kHz/24-bit
+SqueezeSC engine, live audio diagnostics and the hardened PCM/I2S pipeline.
+The Wi-Fi recovery introduced in 0.4.2 remains active and restores the setup
+access point automatically after invalid credentials.
 
 Functional or documentation problems can be reported through GitHub Issues.
 Logs and screenshots must be checked for Wi-Fi credentials, IP addresses, Roon
