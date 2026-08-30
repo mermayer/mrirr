@@ -4,7 +4,7 @@
 
 **A tactile Roon controller, learned IR remote and Squeezebox audio endpoint in one compact ESP32-S3 device.**
 
-[![Firmware](https://img.shields.io/github/v/release/mermayer/mrirr?label=firmware)](https://github.com/mermayer/mrirr/releases)
+[![Firmware](https://img.shields.io/badge/firmware-0.5.0-15845d)](https://mermayer.github.io/mrirr/)
 [![Web installer](https://img.shields.io/badge/web%20installer-open-15845d)](https://mermayer.github.io/mrirr/)
 [![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v6.0.1-cc3d3d)](https://github.com/espressif/esp-idf)
 
@@ -27,23 +27,25 @@ operation does not require a cloud account, phone app or companion process.
 > been authorized.
 
 > This public repository is the official distribution and documentation area
-> for MRIRR. It contains the browser installer, compiled firmware releases,
-> checksums, hardware documentation and presentation images. Firmware source
-> code and internal development material are intentionally not included.
+> for MRIRR. It contains the browser installer, signed update metadata,
+> hardware documentation and presentation images. Firmware binaries are used
+> only by the installer and the integrated online updater; they are not offered
+> as standalone downloads. Firmware source code and internal development
+> material are intentionally not included.
 
 ## Start here
 
 - [Install or recover MRIRR in the browser](https://mermayer.github.io/mrirr/)
 - [USB and driver troubleshooting](https://mermayer.github.io/mrirr/#usb-help)
-- [Download firmware and read release notes](https://github.com/mermayer/mrirr/releases)
 - [Open the hardware and wiring reference](hardware/README.md)
-- [Read about Factory and OTA images](firmware/README.md)
+- [Read the firmware delivery model](firmware/README.md)
 - [Read the PolyForm Noncommercial licence](LICENSE.md)
 - [Read the MRIRR copyright notice](NOTICE)
 
 The current **stable release** is `0.5.0` for the documented ESP32-S3 N16R8
-reference hardware. Existing MRIRR devices can install it through the signed
-internet update or a local OTA upload without replacing their configuration.
+reference hardware. Existing MRIRR devices install updates through the signed
+online updater in their local web interface without replacing their
+configuration.
 
 ## First-time setup
 
@@ -227,25 +229,29 @@ IR receiver -----------|--> slot actions --> selected Roon zone
 This public repository provides:
 
 - browser-based first installation and USB recovery
-- compiled Factory and OTA images through GitHub Releases
-- checksums and bilingual release notes
+- signed update metadata for the integrated online updater
 - hardware documentation and wiring diagrams
-- manually started, signed internet updates over HTTPS
+- manually started, signed online updates over HTTPS
 
 The browser installer is intended for current desktop versions of Chrome and
 Edge on Windows, macOS and Linux. The install button is enabled only when the
 published Factory image and release metadata have passed the release audit.
-See [firmware files and releases](firmware/README.md) for image selection,
+See the [firmware delivery model](firmware/README.md) for installation,
 verification and recovery notes.
 
 The browser installer and public update manifests are published from the
 `docs` directory through [GitHub Pages](https://mermayer.github.io/mrirr/).
-Compiled firmware remains versioned as immutable GitHub Release assets.
+The required Factory and OTA payloads are technical delivery artifacts for
+these two paths and are not presented as public downloads.
 
 MRIRR never installs an internet update automatically. The user starts the
 check and installation from the device's firmware page. Before writing an OTA
 image, MRIRR validates the release channel, board identity, expected size,
 SHA-256 checksum and firmware signature.
+
+The local firmware-file upload routine remains part of MRIRR for controlled
+service and development cases. This repository does not provide matching BIN
+files for manual installation.
 
 ## Licence
 

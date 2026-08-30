@@ -55,12 +55,11 @@
                     <strong id="release-version">-</strong>
                     <span id="release-date" class="muted"></span>
                     <span id="release-channel" class="channel-badge" hidden></span>
-                    <a id="release-notes" class="inline-link" target="_blank" rel="noopener" hidden><span data-i18n="release_notes">Versionshinweise</span><svg><use href="#icon-external"></use></svg></a>
                 </div>
 
                 <div class="factory-warning" role="alert">
                     <svg><use href="#icon-alert"></use></svg>
-                    <div><strong data-i18n="factory_warning_title">Keine normale Aktualisierung</strong><p data-i18n="factory_warning_text">Eine Factory-Installation kann alle WLAN-, Roon-, Slot- und IR-Einstellungen loeschen. Vorher ein Konfigurationsbackup exportieren. Fuer ein bestehendes MRIRR die Update-Alternativen unterhalb verwenden.</p></div>
+                    <div><strong data-i18n="factory_warning_title">Keine normale Aktualisierung</strong><p data-i18n="factory_warning_text">Eine Factory-Installation kann alle WLAN-, Roon-, Slot- und IR-Einstellungen loeschen. Vorher ein Konfigurationsbackup exportieren. Ein bestehendes MRIRR wird ausschliesslich ueber das integrierte Onlineupdate aktualisiert.</p></div>
                 </div>
 
                 <esp-web-install-button id="web-installer">
@@ -91,19 +90,18 @@
         <section class="content-section update-alternatives" aria-labelledby="update-alternatives-title">
             <div class="section-heading">
                 <h2 id="update-alternatives-title" data-i18n="update_alternatives_title">Bestehendes MRIRR aktualisieren</h2>
-                <p data-i18n="update_alternatives_intro">Diese Wege erhalten die gespeicherte Konfiguration und sind fuer normale Firmwareupdates vorgesehen.</p>
+                <p data-i18n="update_alternatives_intro">Normale Firmwareupdates erfolgen direkt auf dem Geraet und erhalten die gespeicherte Konfiguration.</p>
             </div>
             <div class="update-methods">
                 <div>
-                    <span class="method-number">1</span>
+                    <span class="method-number"><svg><use href="#icon-check"></use></svg></span>
                     <div><strong data-i18n="online_update_title">Signiertes Internet-Update</strong><p data-i18n="online_update_text">Die lokale MRIRR-Weboberflaeche oeffnen und unter System &gt; Firmware aktualisieren nach Updates suchen. MRIRR prueft Manifest, Board, Groesse, SHA-256 und Signatur vor der Installation.</p></div>
                 </div>
-                <div>
-                    <span class="method-number">2</span>
-                    <div><strong data-i18n="local_ota_title">Lokaler OTA-Upload</strong><p data-i18n="local_ota_text">Auf derselben Firmwareseite eine passende mrirr-ota-Datei auswaehlen. Niemals das Factory-Image in den OTA-Upload laden.</p></div>
-                </div>
             </div>
-            <a class="inline-link" href="#downloads"><span data-i18n="open_downloads">Zu den Firmwaredateien</span><svg><use href="#icon-download"></use></svg></a>
+            <div class="distribution-note">
+                <svg><use href="#icon-alert"></use></svg>
+                <p><strong data-i18n="distribution_policy_title">Keine direkten Firmware-Downloads</strong><span data-i18n="distribution_policy_text">Firmwaredateien werden nicht als freie Downloads angeboten. Die lokale Datei-Uploadfunktion bleibt fuer kontrollierte Servicefaelle im Geraet enthalten.</span></p>
+            </div>
         </section>
 
         <section class="content-section" aria-labelledby="steps-title">
@@ -155,13 +153,6 @@
                     <a class="inline-link docs-link" href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/get-started/establish-serial-connection.html" target="_blank" rel="noopener"><span data-i18n="driver_docs">Espressif-Hinweise zu USB und seriellen Treibern</span><svg><use href="#icon-external"></use></svg></a>
                 </div>
             </div>
-            <div class="flash-tool-note">
-                <div>
-                    <strong data-i18n="flash_tool_title">Manueller Windows-Fallback</strong>
-                    <p data-i18n="flash_tool_text">Wenn Web Serial trotz erkanntem COM-Port nicht funktioniert, kann das offizielle Espressif Flash Download Tool verwendet werden. Fuer MRIRR ist dabei ausschliesslich das Factory-Image vorgesehen; ein OTA-Image ist hier falsch.</p>
-                </div>
-                <a class="external-button" href="https://docs.espressif.com/projects/esp-test-tools/en/latest/esp32/production_stage/tools/flash_download_tool.html" target="_blank" rel="noopener"><span data-i18n="flash_tool_link">Flash Download Tool oeffnen</span><svg><use href="#icon-external"></use></svg></a>
-            </div>
         </section>
 
         <section class="content-section split-section" aria-labelledby="recovery-title">
@@ -185,22 +176,6 @@
             </div>
         </section>
 
-        <section id="downloads" class="content-section" aria-labelledby="downloads-title">
-            <div class="section-heading">
-                <h2 id="downloads-title" data-i18n="downloads_title">Firmwaredateien</h2>
-                <p data-i18n="downloads_intro">Factory fuer Erstinstallation und Recovery, OTA nur fuer bereits installierte Geraete.</p>
-            </div>
-            <div class="download-table" role="table" aria-label="Firmware downloads">
-                <div class="download-row table-head" role="row"><span data-i18n="file">Datei</span><span data-i18n="purpose">Verwendung</span><span data-i18n="checksum">SHA-256</span><span></span></div>
-                <div class="download-row" role="row">
-                    <strong id="factory-name">mrirr-factory-current.bin</strong><span data-i18n="factory_purpose">Erstinstallation / Recovery</span><code id="factory-sha">-</code><a id="factory-download" class="download-link disabled" aria-disabled="true"><svg><use href="#icon-download"></use></svg><span data-i18n="download">Download</span></a>
-                </div>
-                <div class="download-row" role="row">
-                    <strong id="ota-name">mrirr-ota-not-released.bin</strong><span data-i18n="ota_purpose">Lokales oder signiertes Internet-Update</span><code id="ota-sha">-</code><a id="ota-download" class="download-link disabled" aria-disabled="true"><svg><use href="#icon-download"></use></svg><span data-i18n="download">Download</span></a>
-                </div>
-            </div>
-        </section>
-
         <section class="content-section hardware-section" aria-labelledby="hardware-title">
             <div class="section-heading">
                 <h2 id="hardware-title" data-i18n="hardware_title">Hardware und Verdrahtung</h2>
@@ -215,7 +190,7 @@
 
     <footer>
         <span>MRIRR &middot; Minimal Roon IR Remote</span>
-        <span class="footer-links"><a href="https://github.com/mermayer/mrirr" target="_blank" rel="noopener" data-i18n="repository">GitHub-Repository</a><a href="https://github.com/mermayer/mrirr/releases" target="_blank" rel="noopener" data-i18n="releases">Firmware-Releases</a><a href="legal/LICENSE.md">Licence</a><a href="legal/NOTICE.txt">Copyright notice</a><a href="legal/THIRD_PARTY_NOTICES.md">Third-party notices</a><span data-i18n="footer_note">Firmware-Verteilung und Wiederherstellung</span></span>
+        <span class="footer-links"><a href="https://github.com/mermayer/mrirr" target="_blank" rel="noopener" data-i18n="repository">GitHub-Repository</a><a href="legal/LICENSE.md">Licence</a><a href="legal/NOTICE.txt">Copyright notice</a><a href="legal/THIRD_PARTY_NOTICES.md">Third-party notices</a><span data-i18n="footer_note">Installation und Dokumentation</span></span>
     </footer>
 </body>
 </html>
